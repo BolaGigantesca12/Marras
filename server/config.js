@@ -4,7 +4,7 @@ module.exports = {
 
     // Client
     main_menu: "index.html", // Where the main menu is located (in the /public folder).
-    host: "localhost:3000", // Game server domain. If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
+    host: "fanrras.netlify.app", // Game server domain. If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
     port: 3000, // Which port to run the web server on.
 
     // Server
@@ -39,16 +39,16 @@ module.exports = {
 
     servers: [
         {
-            share_client_server: false,
-            host: "localhost:3001",
-            port: 3001,
+            share_client_server: true,
+            host: "fanrras.netlify.app",
+            port: 3000,
             id: "la",
 
-            region: "Local",
-            serverhost: "Local",
-            location: "Localhost",
-            gamemode: ["ffa"],
-            player_cap: 80,
+            region: "Europe",
+            serverhost: "fanrras.netlify.app",
+            location: "Netlify",
+            gamemode: ["sandbox"],
+            player_cap: 20,
 
             featured: false,
             unlisted: false,
@@ -86,7 +86,7 @@ module.exports = {
             player_cap: 80,
 
             featured: false,
-            unlisted: false,
+            unlisted: true,
             private: false,
 
             properties: {
@@ -106,7 +106,7 @@ module.exports = {
             player_cap: 80,
 
             featured: false,
-            unlisted: false,
+            unlisted: true,
             private: false,
 
             properties: {
@@ -140,7 +140,7 @@ module.exports = {
             player_cap: 80,
 
             featured: false,
-            unlisted: false,
+            unlisted: true,
             private: false,
 
             properties: {
@@ -162,7 +162,7 @@ module.exports = {
             player_cap: 80,
 
             featured: false,
-            unlisted: false,
+            unlisted: true,
             private: false,
 
             properties: {}
