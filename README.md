@@ -27,6 +27,38 @@ After the first install, you may use either `run.bat` (if you're on Windows) or 
 > [!NOTE]
 > If you're having issues launching from `run.sh`, make sure the file is set to be able to run as an executable in its properties. This only needs to be done once.
 
+## Hosting on Render
+
+The game requires a persistent Node.js process with WebSocket support. Netlify
+can serve the browser files but cannot run the game server.
+
+1. Push these changes to GitHub.
+2. In Render, create a **Blueprint** from this repository. `render.yaml`
+   configures the Node web service, start command, and health check.
+3. Once deployed, open the HTTPS URL assigned by Render to play. That service
+   serves the page, API, and secure WebSocket together. The app automatically
+   uses Render's hostname and assigned port and runs only the shared sandbox
+   server, excluding the localhost examples.
+4. To send Netlify visitors to the game, add the following to `netlify.toml`,
+   replacing the placeholder with the actual Render hostname after creation:
+
+   ```toml
+   [[redirects]]
+     from = "/*"
+     to = "https://YOUR-ACTUAL-SERVICE.onrender.com/:splat"
+     status = 302
+     force = true
+   ```
+
+Until the Render service and redirect exist, Netlify serves the menu only;
+gameplay requires the Render URL. Do not deploy the placeholder redirect.
+Render's free plan can sleep when idle and take time to wake up; an always-on
+plan is needed for uninterrupted availability.
+
+A local `server/.env` file is optional. Hosted environment settings take
+precedence. Privileged API features require their corresponding credentials
+configured on the server.
+
 ## Server setup
 You can set up in-game servers in `server/config.js`. An example is present in the file.
 

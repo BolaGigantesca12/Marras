@@ -15,12 +15,13 @@ Error.stackTraceLimit = Infinity;
 
 // Load environment variables from .env using a custom dotenv loader
 const dotenv = require("./lib/dotenv.js");
-const envContent = fs.readFileSync(path.join(__dirname, "./.env")).toString();
+const envPath = path.join(__dirname, "./.env");
+const envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, "utf8") : "";
 const environment = dotenv(envContent);
 
 // Set each environment variable in process.env
 for (const key in environment) {
-    process.env[key] = environment[key];
+    if (process.env[key] === undefined) process.env[key] = environment[key];
 }
 
 // Load all necessary modules and files via the loader
@@ -76,6 +77,7 @@ if (Config.allow_ACAO && Config.startup_logs) {
 server = http.createServer((req, res) => {
     let query = {};
     let pathname = req.url.split("?")[0];
+    if (pathname === "/") pathname = "/" + Config.main_menu;
     if (req.url.includes("?")) {
         req.url.split("?")[1].split("&").map(i => {
             let key = i.split("=")[0];
@@ -146,7 +148,7 @@ server = http.createServer((req, res) => {
 
         case "/api/sendPlayer": {
             ok = false;
-            if (query.api_key !== process.env.API_KEY) {
+            if (!process.env.API_KEY || query.api_key !== process.env.API_KEY) {
                 res.writeHead(403);
                 res.end("Access Denied");
                 return;

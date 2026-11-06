@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fanrras-game
+    runtime: node
+    plan: free
+    buildCommand: npm install --omit=dev
+    startCommand: npm start
+    healthCheckPath: /isOnline
+    envVars:
+      - key: NODE_VERSION
+        value: 22.23.3

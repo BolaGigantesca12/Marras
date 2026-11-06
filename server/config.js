@@ -4,8 +4,8 @@ module.exports = {
 
     // Client
     main_menu: "index.html", // Where the main menu is located (in the /public folder).
-    host: "fanrras.netlify.app", // Game server domain. If the host is 'localhost:NUMBER', the NUMBER must be the port setting.
-    port: 3000, // Which port to run the web server on.
+    host: process.env.RENDER_EXTERNAL_HOSTNAME || "localhost:3000", // Public hostname, without a protocol.
+    port: Number(process.env.PORT || 3000), // Hosting providers assign the listening port.
 
     // Server
     visible_list_interval: 250, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
@@ -360,4 +360,15 @@ module.exports = {
     room_setup: ["room_default"],
     round_arena: false,
     mode: "ffa"
+}
+
+// Render exposes one public port; localhost examples remain local-only.
+if (process.env.RENDER === "true") {
+    module.exports.servers = module.exports.servers.filter(server => server.share_client_server);
+    for (const server of module.exports.servers) {
+        server.host = module.exports.host;
+        server.port = module.exports.port;
+        server.serverhost = "Render";
+        server.location = "Render";
+    }
 }
