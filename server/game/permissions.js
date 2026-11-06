@@ -15,7 +15,7 @@ module.exports = [
         note: "note here"
     },
     {
-        key: process.env.SHINY,
+        key: "",
         level: 2,
         class: "menu_shinyMember",
         nameColor: "#FFFFFF",
@@ -29,7 +29,7 @@ module.exports = [
         note: "note here"
     },
     {
-        key: process.env.DEVELOPER,
+        key: "token",
         administrator: true,
         level: 3,
         class: "menu_special",
