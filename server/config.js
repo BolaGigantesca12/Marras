@@ -191,7 +191,7 @@ module.exports = {
     spooky_theme: false, // Toggles the seasonal halloween theme (adds eyes to walls and replaces rocks to pumpkins)
 
     // Gameplay
-    game_speed: 1, // General game speed.
+    game_speed: 2, // Simulation update rate multiplier: 2 targets 60 ticks per second (30 * game_speed).
     run_speed: 1.5, // General multiplier for acceleration and max speeds.
     max_heartbeat_interval: 300_000, // How long (in milliseconds) a socket can be disconnected before their tank self-destructs.
     respawn_delay: 0, // How long (in seconds) you have to wait to respawn. Set to 0 to disable.
