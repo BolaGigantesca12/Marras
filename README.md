@@ -95,3 +95,20 @@ If you do not care about any of this, just ignore that eslint exists or the erro
 - [YouTube](https://www.youtube.com/@OpenSourceArras)
 
 *p.s. if something goes terribly wrong it's not our fault*
+
+## Performance checks
+
+Run `node --test tests/performance.test.cjs` to verify collision queries with
+500 entities and AI target selection. Run `node scripts/benchmark-targeting.cjs`
+for a repeatable 500-candidate, 60-wall targeting benchmark. This isolates AI
+candidate scanning and wall intersections; it does not measure full server tick
+time, browser rendering, or network latency.
+
+AI targeting rejects candidates outside the firing arc before checking walls,
+checks line of sight once per eligible candidate, and tracks maximum danger
+during the candidate scan. These changes reduce repeated work without changing
+target priority or lowering the simulation rate. For live load testing, use the
+server's existing slow-tick diagnostics to check simulation time with the actual
+tanks, bullets, bots, and player count. At normal room speed the 30 Hz simulation
+has about 33 ms per tick; 500 simple food entities and 500 armed bots have very
+different costs. Deploy the updated Node.js game server to apply these changes.

@@ -478,10 +478,13 @@ class io_nearestDifferentMaster extends IO {
         const sqrRange = range * range;
         const sqrRangeMaster = sqrRange * 4 / 3;
         const validCandidates = [];
+        let mostDangerous = 0;
         for (const e of targetableEntities.values()) {
-            if (this.validate(e, this.body, this.body.master.master, sqrRange, sqrRangeMaster) && !this.wouldHitWall(e)) {
-                if (this.body.aiSettings.view360 || Math.abs(util.angleDifference(util.getDirection(this.body, e), this.body.firingArc[0])) < this.body.firingArc[1]) {
+            if (this.validate(e, this.body, this.body.master.master, sqrRange, sqrRangeMaster)) {
+                // Reject targets outside the firing arc before testing every wall.
+                if ((this.body.aiSettings.view360 || Math.abs(util.angleDifference(util.getDirection(this.body, e), this.body.firingArc[0])) < this.body.firingArc[1]) && !this.wouldHitWall(e)) {
                     validCandidates.push(e);
+                    mostDangerous = Math.max(e.dangerValue, mostDangerous);
                 }
             }
         }
@@ -489,15 +492,9 @@ class io_nearestDifferentMaster extends IO {
             this.targetLock = undefined;
             return [];
         }
-        let mostDangerous = 0;
-        for (const e of validCandidates) {
-            mostDangerous = Math.max(e.dangerValue, mostDangerous);
-        }
         let keepTarget = false;
-        const finalTargets = validCandidates.filter((e) => {
-            // Even more expensive
-            return !this.wouldHitWall(e);
-        }).filter(e => {
+        // Candidates have already passed the line-of-sight test above.
+        const finalTargets = validCandidates.filter(e => {
             if (this.body.aiSettings.farm || e.dangerValue === mostDangerous) {
                 if (this.targetLock && e.id === this.targetLock.id) {
                     keepTarget = true;
@@ -622,10 +619,13 @@ class io_healTeamMasters extends IO {
         const sqrRange = range * range;
         const sqrRangeMaster = sqrRange * 4 / 3;
         const validCandidates = [];
+        let mostDangerous = 0;
         for (const e of targetableEntities.values()) {
-            if (this.validate(e, this.body, this.body.master.master, sqrRange, sqrRangeMaster) && !this.wouldHitWall(e)) {
-                if (this.body.aiSettings.view360 || Math.abs(util.angleDifference(util.getDirection(this.body, e), this.body.firingArc[0])) < this.body.firingArc[1]) {
+            if (this.validate(e, this.body, this.body.master.master, sqrRange, sqrRangeMaster)) {
+                // Reject targets outside the firing arc before testing every wall.
+                if ((this.body.aiSettings.view360 || Math.abs(util.angleDifference(util.getDirection(this.body, e), this.body.firingArc[0])) < this.body.firingArc[1]) && !this.wouldHitWall(e)) {
                     validCandidates.push(e);
+                    mostDangerous = Math.max(e.dangerValue, mostDangerous);
                 }
             }
         }
@@ -633,15 +633,9 @@ class io_healTeamMasters extends IO {
             this.targetLock = undefined;
             return [];
         }
-        let mostDangerous = 0;
-        for (const e of validCandidates) {
-            mostDangerous = Math.max(e.dangerValue, mostDangerous);
-        }
         let keepTarget = false;
-        const finalTargets = validCandidates.filter((e) => {
-            // Even more expensive
-            return !this.wouldHitWall(e);
-        }).filter(e => {
+        // Candidates have already passed the line-of-sight test above.
+        const finalTargets = validCandidates.filter(e => {
             if (this.body.aiSettings.farm || e.dangerValue === mostDangerous) {
                 if (this.targetLock && e.id === this.targetLock.id) {
                     keepTarget = true;
