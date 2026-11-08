@@ -668,16 +668,17 @@ Class.antiTankMachineGun = {
 Class.arenaCloser = {
     PARENT: "genericTank",
     LABEL: "Arena Closer",
+    NAME: "Arena Closer",
     DISPLAY_NAME: false,
     DANGER: 10,
     SIZE: 68,
     BODY: {
         REGEN: 1e5,
-        HEALTH: 1e6,
+        HEALTH: 1e5,
         DENSITY: 30,
         DAMAGE: 1e5,
         FOV: 10,
-        ACCELERATION: 4
+        ACCELERATION: 3
     },
     SKILL: skillSet({rld: 1, dam: 1, pen: 1, str: 1, spd: 1, atk: 1, hlt: 1, shi: 1, rgn: 1, mob: 1}),
     DRAW_HEALTH: false,
