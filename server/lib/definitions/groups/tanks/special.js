@@ -621,25 +621,26 @@ Class.antiTankMachineGun = {
     },
     SKILL_CAP: Array(10).fill(15),
     SKILL: Array(10).fill(15),
+    SYNC_WITH_TANK: true,
     GUNS: [
         {
             POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708751634699e-8, Y: 1.5000000596046434, ANGLE: 0 },
-            PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.6, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
-                TYPE: "bullet"
-            }
-        },
-        {
-            POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708770004402e-8, Y: -1.5000000596046434, ANGLE: 0 },
             PROPERTIES: {
                 SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.8, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet"
             }
         },
         {
+            POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708770004402e-8, Y: -1.5000000596046434, ANGLE: 0 },
+            PROPERTIES: {
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 1.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
+                TYPE: "bullet"
+            }
+        },
+        {
             POSITION: { LENGTH: 17.000000476837158, WIDTH: 3.0000001192092896, X: 0, Y: 0, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.6, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.8, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet"
             }
         },
@@ -670,7 +671,7 @@ Class.arenaCloser = {
     NAME: "Arena Closer",
     DISPLAY_NAME: false,
     DANGER: 10,
-    SIZE: 76,
+    SIZE: 80,
     BODY: {
         REGEN: 1e5,
         HEALTH: 1e5,
