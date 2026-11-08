@@ -670,10 +670,7 @@ Class.arenaCloser = {
     LABEL: "Arena Closer",
     DISPLAY_NAME: false,
     DANGER: 10,
-    SIZE: 34,
-    COLOR: "yellow",
-    UPGRADE_COLOR: "yellow",
-    LAYER: 13,
+    SIZE: 68,
     BODY: {
         REGEN: 1e5,
         HEALTH: 1e6,
@@ -687,7 +684,6 @@ Class.arenaCloser = {
     HITS_OWN_TYPE: "never",
     ARENA_CLOSER: true,
     IS_IMMUNE_TO_TILES: true,
-    UPGRADE_TOOLTIP: "Hackerman",
     GUNS: [
         {
             POSITION: {
@@ -695,8 +691,8 @@ Class.arenaCloser = {
                 WIDTH: 10
             },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, {reload: 0.8, recoil: 0.25, health: 1e3, damage: 1e3, pen: 1e3, speed: 3, maxSpeed: 1, range: 1.8, density: 4, spray: 0.25}]),
-                TYPE: ["bullet", {LAYER: 12}]
+                SHOOT_SETTINGS: combineStats([g.basic, {reload: 1.2, recoil: 0.25, health: 1e3, damage: 1e3, pen: 1e3, speed: 3, maxSpeed: 1, range: 1.8, density: 4, spray: 0.25}]),
+                TYPE: "bullet",
             }
         }
     ]
