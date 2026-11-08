@@ -8,7 +8,7 @@ module.exports = {
     port: Number(process.env.PORT || 3000), // Hosting providers assign the listening port.
 
     // Server
-    visible_list_interval: 200, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
+    visible_list_interval: 350, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
     startup_logs: false, // Enable detailed startup logs and log speed loop warnings in the terminal
     load_all_mockups: false, // Set to true if you want every mockup to be loaded when the server starts. May noticeably slow down server startup.
     editor: false, // Enable the editor at '[host]/ext/editor'.
@@ -47,7 +47,7 @@ module.exports = {
             region: "Europe",
             serverhost: "marras.onrender.com",
             location: "Render",
-            gamemode: ["sandbox"],
+            gamemode: ["nexus"],
             player_cap: 20,
 
             featured: false,
