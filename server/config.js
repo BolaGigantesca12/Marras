@@ -47,7 +47,7 @@ module.exports = {
             region: "Europe",
             serverhost: "marras.onrender.com",
             location: "Render",
-            gamemode: ["labyrinth"],
+            gamemode: ["sandbox"],
             player_cap: 20,
 
             featured: false,
