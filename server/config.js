@@ -8,10 +8,10 @@ module.exports = {
     port: Number(process.env.PORT || 3000), // Hosting providers assign the listening port.
 
     // Server
-    visible_list_interval: 1, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
-    startup_logs: true, // Enable detailed startup logs and log speed loop warnings in the terminal
+    visible_list_interval: 200, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
+    startup_logs: false, // Enable detailed startup logs and log speed loop warnings in the terminal
     load_all_mockups: false, // Set to true if you want every mockup to be loaded when the server starts. May noticeably slow down server startup.
-    editor: true, // Enable the editor at '[host]/ext/editor'.
+    editor: false, // Enable the editor at '[host]/ext/editor'.
 
     /* SERVER PROPERTIES INFORMATION - Make sure to change the host, port and id between servers!
 
@@ -59,6 +59,7 @@ module.exports = {
                     tank: "rapture",
                     tier: 3,
                     teams: 2,
+                    gamemode: ["arms_race"],
                     bot_cap: 3,
                     ads: false,
                     ad_sources: [
