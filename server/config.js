@@ -47,7 +47,7 @@ module.exports = {
             region: "Europe",
             serverhost: "marras.onrender.com",
             location: "Render",
-            gamemode: ["arms_race"],
+            gamemode: ["labyrinth"],
             player_cap: 20,
 
             featured: false,
@@ -58,6 +58,7 @@ module.exports = {
                 daily_tank: {
                     tank: "rapture",
                     tier: 3,
+                    teams: 2,
                     bot_cap: 3,
                     ads: false,
                     ad_sources: [
