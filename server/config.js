@@ -40,13 +40,13 @@ module.exports = {
     servers: [
         {
             share_client_server: true,
-            host: "fanrras.netlify.app",
+            host: "marras.onrender.com",
             port: 3000,
             id: "la",
 
             region: "Europe",
-            serverhost: "fanrras.netlify.app",
-            location: "Netlify",
+            serverhost: "marras.onrender.com",
+            location: "Remder",
             gamemode: ["sandbox"],
             player_cap: 20,
 
@@ -55,11 +55,10 @@ module.exports = {
             private: false,
 
             properties: {
-                bot_cap: 20,
                 daily_tank: {
-                    tank: "whirlwind",
+                    tank: "railgun",
                     tier: 3,
-                    ads: true,
+                    ads: false,
                     ad_sources: [
                         {
                             file: "example_video_ad.mp4",
@@ -183,10 +182,10 @@ module.exports = {
 
     chat_message_duration: 15_000, // How long a chat message lasts in milliseconds.
     popup_message_duration: 10_000, // How long a popup message lasts in milliseconds.
-    sanitize_chat_input: true, // If you don't want your players to color their messages. They get sanitized after addons interpret them, but before they're added to the chat message dictionary.
+    sanitize_chat_input: false, // If you don't want your players to color their messages. They get sanitized after addons interpret them, but before they're added to the chat message dictionary.
 
     // Seasonal
-    fireworks: false, // Toggles fireworks (automatic around July 4 in US-region servers)
+    fireworks: true, // Toggles fireworks (automatic around July 4 in US-region servers)
     thanksgiving: false, // Toggles the seasonal thanksgiving theme (replaces Motherships with Turkeys)
     spooky_theme: false, // Toggles the seasonal halloween theme (adds eyes to walls and replaces rocks to pumpkins)
 
@@ -199,7 +198,7 @@ module.exports = {
     upgrade_delay: 3_000, // How long (in milliseconds) you have to stay still to upgrade outside of a base. Set to 0 to disable.
     upgrade_delay_reminder: 20_000, // How often (in milliseconds) you will be reminded to stay still and not shoot to upgrade outside of a base if you haven't upgraded yet.
 
-    bullet_spawn_offset: 1, // Where the bullet spawns, where 1 is fully outside the barrel and -1 is fully inside the barrel, and 0 is halfway between.
+    bullet_spawn_offset: -1, // Where the bullet spawns, where 1 is fully outside the barrel and -1 is fully inside the barrel, and 0 is halfway between.
     damage_multiplier: 1, // General damage multiplier everytime damage is dealt.
     knockback_multiplier: 1.1, // General knockback multiplier everytime knockback is applied.
     glass_health_factor: 2, // TODO: Figure out how the math behind this works.
