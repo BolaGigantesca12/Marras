@@ -566,6 +566,9 @@ class gameServer {
                     SIZE: 34,
                     ACCEPTS_SCORE: false,
                     LEVEL: 45,
+                    BODY: {
+                        ACCELERATION: 5,
+                    },
                     AI: {
                         FULL_VIEW: true,
                         SKYNET: true,
