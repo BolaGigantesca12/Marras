@@ -642,7 +642,7 @@ module.exports = {
         speed: 1.8,
         maxSpeed: 0.6,
         density: 1.2,
-        spray: 1.2
+        spray: 0.2
     },
     destroyerDominator: {
         reload: 6.5,
