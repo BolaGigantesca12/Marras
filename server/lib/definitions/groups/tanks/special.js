@@ -604,7 +604,6 @@ Class.banHammer = {
 Class.antiTankMachineGun = {
     PARENT: "dominator",
     LABEL: "Anti-Tank Machine Gun",
-    UPGRADE_LABEL: "A.T.M.G.",
     CONTROLLERS: [["spin", {onlyWhenIdle: true}], "nearestDifferentMaster"],
     LEVEL: 45,
     SIZE: 32,
@@ -612,13 +611,13 @@ Class.antiTankMachineGun = {
         RESIST: 100,
         SPEED: 1.32,
         ACCELERATION: 0.8,
-        HEALTH: 1e99,
+        HEALTH: 1e4,
         DAMAGE: 6,
         PENETRATION: 0.25,
         FOV: 1.35,
         PUSHABILITY: 0,
         HETERO: 0,
-        SHIELD: base.SHIELD * 1.4
+        SHIELD: 1e4
     },
     SKILL_CAP: Array(10).fill(15),
     SKILL: Array(10).fill(15),
@@ -626,21 +625,21 @@ Class.antiTankMachineGun = {
         {
             POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708751634699e-8, Y: 1.5000000596046434, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.6, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet"
             }
         },
         {
             POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708770004402e-8, Y: -1.5000000596046434, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.8, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet"
             }
         },
         {
             POSITION: { LENGTH: 17.000000476837158, WIDTH: 3.0000001192092896, X: 0, Y: 0, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.6, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet"
             }
         },
@@ -671,7 +670,7 @@ Class.arenaCloser = {
     NAME: "Arena Closer",
     DISPLAY_NAME: false,
     DANGER: 10,
-    SIZE: 68,
+    SIZE: 76,
     BODY: {
         REGEN: 1e5,
         HEALTH: 1e5,
