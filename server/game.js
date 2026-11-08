@@ -567,7 +567,7 @@ class gameServer {
                     ACCEPTS_SCORE: false,
                     LEVEL: 45,
                     BODY: {
-                        ACCELERATION: 5,
+                        ACCELERATION: 7,
                     },
                     AI: {
                         FULL_VIEW: true,
