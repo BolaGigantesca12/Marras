@@ -555,8 +555,8 @@ class gameServer {
                 let angle = ((Math.PI * 2) / 15) * i;
                 // Spawn the entity
                 let o = new Entity({
-                    x: (this.room.width / 2 * this.room.xgrid / this.room.width) + (this.room.width / 0.7) * Math.cos(angle),
-                    y: (this.room.width / 2 * this.room.xgrid / this.room.width) + (this.room.width / 0.7) * Math.sin(angle)
+                    x: (this.room.width / 2 * this.room.xgrid / this.room.width) + (this.room.width / 0.3) * Math.cos(angle),
+                    y: (this.room.width / 2 * this.room.xgrid / this.room.width) + (this.room.width / 0.3) * Math.sin(angle)
                 });
 
                 // Define it as arena closer
