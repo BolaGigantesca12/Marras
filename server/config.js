@@ -46,8 +46,8 @@ module.exports = {
 
             region: "Europe",
             serverhost: "marras.onrender.com",
-            location: "Remder",
-            gamemode: ["sandbox"],
+            location: "Render",
+            gamemode: ["arms_race"],
             player_cap: 20,
 
             featured: false,
@@ -56,8 +56,9 @@ module.exports = {
 
             properties: {
                 daily_tank: {
-                    tank: "railgun",
+                    tank: "rapture",
                     tier: 3,
+                    bot_cap: 3,
                     ads: false,
                     ad_sources: [
                         {
