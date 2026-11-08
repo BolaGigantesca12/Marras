@@ -563,8 +563,12 @@ class gameServer {
                 o.define("arenaCloser");
                 o.define({
                     COLOR: "yellow",
-                    SIZE: 68,
+                    SIZE: 34,
                     ACCEPTS_SCORE: false,
+                    LEVEL: 45,
+                    BODY: {
+                        SPEED: 10
+                    },
                     AI: {
                         FULL_VIEW: true,
                         SKYNET: true,
