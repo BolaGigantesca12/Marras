@@ -130,7 +130,7 @@ class Gun extends EventEmitter {
                 this.motion = -this.motion;
             }
             if (this.motion > 0) {
-                this.motion *= 1;
+                this.motion *= 0.75;
             }
         }
         if (this.canShoot && !this.body.settings.hasNoRecoil) {
