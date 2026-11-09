@@ -7,7 +7,7 @@ let spawnPermanentAntiTankMachineGun = (loc, gameManager) => {
     })
     o.controllers = [new ioTypes.nearestDifferentMaster(o, {}, gameManager)]
     o.team = TEAM_ROOM;
-    o.SIZE = 18;
+    o.SIZE = 16;
     o.color.base = getTeamColor(TEAM_RED);
     o.on("dead", () => spawnPermanentAntiTankMachineGun(loc, gameManager));
 };
