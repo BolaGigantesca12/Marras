@@ -962,7 +962,7 @@ Class.antiTankMachineGunArm = {
             PROPERTIES: {
                 SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 1.5, maxSpeed: 1.5}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -14.8
+                SPAWN_OFFSET: -30
             }
         },
         {
@@ -970,7 +970,7 @@ Class.antiTankMachineGunArm = {
             PROPERTIES: {
                 SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 1.5, maxSpeed: 1.5}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -14.8
+                SPAWN_OFFSET: -30
             }
         },
         {
@@ -978,7 +978,7 @@ Class.antiTankMachineGunArm = {
             PROPERTIES: {
                 SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.1, speed: 1.5, maxSpeed: 1.5}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -14.8
+                SPAWN_OFFSET: -30
             }
         },
         {
