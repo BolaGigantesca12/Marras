@@ -8,7 +8,7 @@ module.exports = {
     port: Number(process.env.PORT || 3000), // Hosting providers assign the listening port.
 
     // Server
-    visible_list_interval: 350, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
+    visible_list_interval: 700, // How often to update the list of the entities that players can see. Has effects of when entities are activated.
     startup_logs: false, // Enable detailed startup logs and log speed loop warnings in the terminal
     load_all_mockups: false, // Set to true if you want every mockup to be loaded when the server starts. May noticeably slow down server startup.
     editor: false, // Enable the editor at '[host]/ext/editor'.
@@ -175,8 +175,8 @@ module.exports = {
     allow_ACAO: false, // Access-Control-Allow-Origin, allows any server/client to access data from the WebServer.
 
     // Map
-    map_tile_width: 400,
-    map_tile_height: 400,
+    map_tile_width: 420,
+    map_tile_height: 420,
 
     // The message that appears once a player spawns.
     spawn_message: "You have spawned! Welcome to the game.\n"
@@ -201,7 +201,7 @@ module.exports = {
     upgrade_delay: 3_000, // How long (in milliseconds) you have to stay still to upgrade outside of a base. Set to 0 to disable.
     upgrade_delay_reminder: 20_000, // How often (in milliseconds) you will be reminded to stay still and not shoot to upgrade outside of a base if you haven't upgraded yet.
 
-    bullet_spawn_offset: -1, // Where the bullet spawns, where 1 is fully outside the barrel and -1 is fully inside the barrel, and 0 is halfway between.
+    bullet_spawn_offset: -0.8, // Where the bullet spawns, where 1 is fully outside the barrel and -1 is fully inside the barrel, and 0 is halfway between.
     damage_multiplier: 1, // General damage multiplier everytime damage is dealt.
     knockback_multiplier: 1.1, // General knockback multiplier everytime knockback is applied.
     glass_health_factor: 2, // TODO: Figure out how the math behind this works.
