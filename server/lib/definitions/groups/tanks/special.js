@@ -674,7 +674,7 @@ Class.arenaCloser = {
     SIZE: 80,
     BODY: {
         REGEN: 1e5,
-        HEALTH: 1e5,
+        HEALTH: 6e4,
         DENSITY: 30,
         DAMAGE: 1e5,
         FOV: 10,
