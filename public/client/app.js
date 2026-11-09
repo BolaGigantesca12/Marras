@@ -3265,6 +3265,10 @@ import * as socketStuff from "./socketinit.js";
         let messages = global.chats[instance.id];
         if (!messages) return;
 
+        // Keep the chat's text and bubble size constant, independent of tank size.
+        // The vertical spacing below still follows the tank size.
+        const CHAT_FONT_SIZE = 10;
+        const CHAT_BUBBLE_HEIGHT = 15;
         const messageSpacing = 25 * 0.04 * g;
 
         // Draw all the messages
@@ -3272,7 +3276,7 @@ import * as socketStuff from "./socketinit.js";
             let chatIndex = messages.length - 1 - i;
             let chat = messages[chatIndex],
                 text = chat.text,
-                msgLengthHalf = measureText(text, 0.5 * g) / 2,
+                msgLengthHalf = measureText(text, CHAT_FONT_SIZE) / 2,
                 barScale = global.GUIStatus.renderPlayerScores ? 2.66 : 2.26,
                 textScale = global.GUIStatus.renderPlayerScores ? 2.45 : 2.05,
                 valpha = chat.alpha.get();
@@ -3294,10 +3298,10 @@ import * as socketStuff from "./socketinit.js";
             if (valpha <= 0) continue;
 
             ctx[1].globalAlpha = 0.5 * valpha * alpha * alpha * fade;
-            drawBar(x - msgLengthHalf, x + msgLengthHalf, y - g * (instance.id === gui.playerid ? 2.26 : barScale) - slideOffset, 0.75 * g, gameDraw.getColorDark(gameDraw.getColor(instance.color.split(" ")[0])), ctx[1]);
+            drawBar(x - msgLengthHalf, x + msgLengthHalf, y - g * (instance.id === gui.playerid ? 2.26 : barScale) - slideOffset, CHAT_BUBBLE_HEIGHT, gameDraw.getColorDark(gameDraw.getColor(instance.color.split(" ")[0])), ctx[1]);
             ctx[1].globalAlpha = valpha * alpha * fade;
             config.graphical.fontStrokeRatio *= 1.2;
-            drawText(text, x, y - g * (instance.id === gui.playerid ? 2.05 : textScale) - slideOffset, 0.50 * g, color.guiwhite, "center", false, 1, true, ctx[1]);
+            drawText(text, x, y - g * (instance.id === gui.playerid ? 2.05 : textScale) - slideOffset, CHAT_FONT_SIZE, color.guiwhite, "center", false, 1, true, ctx[1]);
             config.graphical.fontStrokeRatio /= 1.2;
         }
     }
