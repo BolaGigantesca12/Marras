@@ -3,11 +3,11 @@ let spawnPermanentAntiTankMachineGun = (loc, gameManager) => {
     o.define("antiTankMachineGun");
     o.define({
         BODY: { FOV: 1.5 },
-        FACING_TYPE: "spinWhenIdle: 0.1"
+        FACING_TYPE: "spinWhenIdle: 5.1"
     })
     o.controllers = [new ioTypes.nearestDifferentMaster(o, {}, gameManager)]
     o.team = TEAM_ROOM;
-    o.SIZE = 20;
+    o.SIZE = 15;
     o.color.base = getTeamColor(TEAM_RED);
     o.on("dead", () => spawnPermanentAntiTankMachineGun(loc, gameManager));
 };
