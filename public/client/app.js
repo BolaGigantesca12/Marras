@@ -3675,12 +3675,10 @@ import * as socketStuff from "./socketinit.js";
         let ping = global.metrics.latency.reduce((b, a) => b + a, 1) / global.metrics.latency.length - 1;
         let xloc = global.player.renderx / 30;
         let yloc = global.player.rendery / 30;
-        let watermarkText = "Open Source Arras";
+        let watermarkText = "arras.io";
         let versionLength = (measureText(global.version ?? "v?", 32)) / 2;
         let length = Math.max(measureText(watermarkText, 32)) / 16;
-        let gradientTransition = global.showDebug ? 4.1 : 2;
-        let watermarkTextPos1 = Math.round(x + len / gradientTransition) + 0.5;
-        let watermarkColor = gameDraw.getColor({gradient: true, asset: [{color: `${color.blue}`}, {color: `${color.green}`}]}, ctx[2], watermarkTextPos1 - length, length * 0.085, watermarkTextPos1 + length, 0);
+        let watermarkColor = "#FFFFFF";
         if (global.showDebug) {
             let getRenderingInfo = (data, isTurret) => {
                 isTurret ? global.renderingInfo.turretEntities += data.length : global.renderingInfo.entities += data.length;
