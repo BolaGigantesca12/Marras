@@ -3251,9 +3251,17 @@ import * as socketStuff from "./socketinit.js";
         let size = isize * ratio,
             g = 20;
 
-        if (!y) y = instance.id === gui.playerid
-            ? global.player.screeny - 1 * global.showChatGlide * g
-            : ratio * instance.render.y - py;
+        if (!y) {
+    let indexes = instance.index.split("-");
+    let m = global.mockups[parseInt(indexes[0])];
+    if (!m) m = global.missingno[0];
+
+    let realSize = (size / m.size) * m.realSize;
+
+    y = instance.id === gui.playerid
+        ? global.player.screeny - global.showChatGlide * g - realSize
+        : ratio * instance.render.y - py - realSize;
+}
         //put chat msg above name
         let fade = instance.render.status.getFade();
         fade *= fade;
