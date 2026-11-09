@@ -3273,7 +3273,8 @@ if (instance.id === gui.playerid) {
         let messages = global.chats[instance.id];
         if (!messages) return;
 
-        const messageSpacing = size * 0.5;
+        const messageSpacing = 25 * 0.04 * g;
+
         // Draw all the messages
         for (let i = 0; i < messages.length; i++) {
             let chatIndex = messages.length - 1 - i;
