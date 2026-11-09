@@ -3246,14 +3246,20 @@ import * as socketStuff from "./socketinit.js";
         ctx[2].globalAlpha = 1;
     }
 
-    function drawChatMessages(x, y, py, instance, ratio, alpha, isize) {
-        if (!(instance.id === gui.playerid) && instance.alpha < 0.25) return;
-        let g = 20;
-let tankOffset = isize * ratio;
+    function drawChatMessages(x, y, py, instance, ratio, alpha, isize)
+    if (!(instance.id === gui.playerid) && instance.alpha < 0.25) return;
 
-if (!y) y = instance.id === gui.playerid
-    ? global.player.screeny - 1 * global.showChatGlide * g - tankOffset
-    : ratio * instance.render.y - py - tankOffset;
+    let g = 30;
+
+    let indexes = instance.index.split("-");
+    let m = global.mockups[parseInt(indexes[0])] ?? global.missingno[0];
+
+    let size = isize * ratio;
+    let tankOffset = (size / m.size) * m.realSize;
+
+    if (!y) y = instance.id === gui.playerid
+        ? global.player.screeny - global.showChatGlide * g - tankOffset
+        : ratio * instance.render.y - py - tankOffset;
         //put chat msg above name
         let fade = instance.render.status.getFade();
         fade *= fade;
