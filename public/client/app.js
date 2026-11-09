@@ -3265,8 +3265,7 @@ import * as socketStuff from "./socketinit.js";
         let messages = global.chats[instance.id];
         if (!messages) return;
 
-        const messageSpacing = 25 * 0.04 * g;
-
+        const messageSpacing = size * 0.5;
         // Draw all the messages
         for (let i = 0; i < messages.length; i++) {
             let chatIndex = messages.length - 1 - i;
