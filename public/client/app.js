@@ -2737,7 +2737,7 @@ import * as socketStuff from "./socketinit.js";
                 y = instance.id === gui.playerid ? global.player.screeny : ratio * instance.render.y - py;
             drawHealth(x, y, instance, ratio, gui.visibleEntities ? 1 : alpha, instance.size);
             drawName(x, y, instance, ratio, gui.visibleEntities ? alpha * 0.75 + 0.25 : alpha, instance.size);
-            drawChatMessages(x, false, py, instance, ratio, gui.visibleEntities ? 1 : alpha, instance.size, px, py);
+            drawChatMessages(x, y, py, instance, ratio, gui.visibleEntities ? 1 : alpha, instance.size, px, py);
             drawChatInput(x, y, instance, ratio, instance.size);
         }
         if (global.advanced.blackout.active) {
@@ -3250,17 +3250,17 @@ import * as socketStuff from "./socketinit.js";
         if (!(instance.id === gui.playerid) && instance.alpha < 0.25) return;
         let size = isize * ratio,
             g = 20;
-
-        if (!y) {
+        
     let indexes = instance.index.split("-");
-    let m = global.mockups[parseInt(indexes[0])];
-    if (!m) m = global.missingno[0];
+let m = global.mockups[parseInt(indexes[0])];
+if (!m) m = global.missingno[0];
 
-    let realSize = (size / m.size) * m.realSize;
+let realSize = (size / m.size) * m.realSize;
 
-    y = instance.id === gui.playerid
-        ? global.player.screeny - global.showChatGlide * g - realSize
-        : ratio * instance.render.y - py - realSize;
+y -= realSize;
+
+if (instance.id === gui.playerid) {
+    y -= global.showChatGlide * g;
 }
         //put chat msg above name
         let fade = instance.render.status.getFade();
