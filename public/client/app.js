@@ -3248,9 +3248,7 @@ import * as socketStuff from "./socketinit.js";
 
     function drawChatMessages(x, y, py, instance, ratio, alpha, isize) {
         if (!(instance.id === gui.playerid) && instance.alpha < 0.25) return;
-        let size = isize * ratio,
-            g = Math.max(20, size);
-
+        let g = 20;
         if (!y) y = instance.id === gui.playerid
             ? global.player.screeny - 1 * global.showChatGlide * g
             : ratio * instance.render.y - py;
