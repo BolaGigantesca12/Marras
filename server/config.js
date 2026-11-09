@@ -175,8 +175,8 @@ module.exports = {
     allow_ACAO: false, // Access-Control-Allow-Origin, allows any server/client to access data from the WebServer.
 
     // Map
-    map_tile_width: 420,
-    map_tile_height: 420,
+    map_tile_width: 400,
+    map_tile_height: 400,
 
     // The message that appears once a player spawns.
     spawn_message: "You have spawned! Welcome to the game.\n"
@@ -355,7 +355,7 @@ module.exports = {
     team_weights: {},
 
     // Fun
-    brain_damage: false, // Violently shakes your camera and tank if you name yourself 'Brain Damage'. Disabled by default for epilepsy concerns.
+    brain_damage: true, // Violently shakes your camera and tank if you name yourself 'Brain Damage'. Disabled by default for epilepsy concerns.
     random_body_colors: false,
 
     // Room setup (don't change these unless you know what you're doing)
