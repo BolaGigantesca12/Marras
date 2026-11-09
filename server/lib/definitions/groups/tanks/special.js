@@ -612,13 +612,13 @@ Class.antiTankMachineGun = {
         RESIST: 100,
         SPEED: 1.32,
         ACCELERATION: 0.8,
-        HEALTH: 1e4,
+        HEALTH: 1e2,
         DAMAGE: 6,
         PENETRATION: 0.25,
         FOV: 1.35,
         PUSHABILITY: 0,
         HETERO: 0,
-        SHIELD: 1e4
+        SHIELD: 1e1
     },
     SKILL_CAP: Array(10).fill(15),
     SKILL: Array(10).fill(15),
