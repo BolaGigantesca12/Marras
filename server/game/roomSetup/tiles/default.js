@@ -3,7 +3,7 @@ let spawnPermanentAntiTankMachineGun = (loc, gameManager) => {
     o.define("antiTankMachineGun");
     o.define({
         BODY: { FOV: 1.5 },
-        FACING_TYPE: "spinWhenIdle: 5.1"
+        FACING_TYPE: "spinWhenIdle"
     })
     o.controllers = [new ioTypes.nearestDifferentMaster(o, {}, gameManager)]
     o.team = TEAM_ROOM;
