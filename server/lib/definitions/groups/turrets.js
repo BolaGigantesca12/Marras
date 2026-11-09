@@ -960,25 +960,25 @@ Class.antiTankMachineGunArm = {
         {
             POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708751634699e-8, Y: 1.5000000596046434, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.3, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.5, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -23
+                SPAWN_OFFSET: -24
             }
         },
         {
             POSITION: { LENGTH: 15, WIDTH: 3.0000001192092896, X: -6.556708770004402e-8, Y: -1.5000000596046434, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.3, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.5, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -23
+                SPAWN_OFFSET: -24
             }
         },
         {
             POSITION: { LENGTH: 17.000000476837158, WIDTH: 3.0000001192092896, X: 0, Y: 0, ANGLE: 0 },
             PROPERTIES: {
-                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.3, speed: 2, maxSpeed: 2}]),
+                SHOOT_SETTINGS: combineStats([g.basic, g.op, {reload: 0.5, health: 100, damage: 100, recoil: 0, spray: 0.5, speed: 2, maxSpeed: 2}]),
                 TYPE: "bullet",
-                SPAWN_OFFSET: -23
+                SPAWN_OFFSET: -24
             }
         },
         {
