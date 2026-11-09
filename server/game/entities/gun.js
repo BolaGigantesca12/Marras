@@ -122,7 +122,7 @@ class Gun extends EventEmitter {
     recoil() {
         if (this.motion || this.position) {
             // Simulate recoil
-            this.motion -= (1.15 * this.position) / global.gameManager.roomSpeed;
+            this.motion -= (0.80 * this.position) / global.gameManager.roomSpeed;
             this.position += this.motion;
             if (this.position < 0) {
                 // Bouncing off the back
@@ -130,7 +130,7 @@ class Gun extends EventEmitter {
                 this.motion = -this.motion;
             }
             if (this.motion > 0) {
-                this.motion *= 0.75;
+                this.motion *= 2.75;
             }
         }
         if (this.canShoot && !this.body.settings.hasNoRecoil) {
