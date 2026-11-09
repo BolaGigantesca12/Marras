@@ -349,10 +349,10 @@ global.runFace = (() => {
         }
         switch (my.facingType) {
             case "spin":
-                my.facing += (my.facingTypeArgs.speed ?? 0.05) / global.gameManager.runSpeed;
+                my.facing += (my.facingTypeArgs.speed ?? 0.03) / global.gameManager.runSpeed;
                 break;
             case "spinWhenIdle":
-                if (t && my.control.fire) my.facing = Math.atan2(t.y, t.x); else my.facing += (my.facingTypeArgs.speed ?? 0.05) / global.gameManager.runSpeed;
+                if (t && my.control.fire) my.facing = Math.atan2(t.y, t.x); else my.facing += (my.facingTypeArgs.speed ?? 0.03) / global.gameManager.runSpeed;
                 break;
             case "turnWithSpeed":
                 my.facing += my.velocity.length / 90 * Math.PI / global.gameManager.roomSpeed * (my.facingTypeArgs.multiplier ?? 1);
