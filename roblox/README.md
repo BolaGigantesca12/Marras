@@ -28,36 +28,38 @@ Rojo is only used while developing. After publishing, players join through Roblo
 
 ## Current port status
 
-This is the first playable foundation, not a claim that all 275 files in the web project have already been translated. It currently includes:
+This is a non-combat playable foundation, not a feature-complete conversion of all 275 files in the web project. It currently includes:
 
 - A Roblox-native server entry point and a fixed 30 Hz authoritative simulation loop.
-- Roblox RemoteEvents for validated input and an UnreliableRemoteEvent for transient state snapshots.
-- A top-down arena, camera, local visuals, basic tank movement, aiming, firing, projectile collision, food collection, score, and level progression.
+- Roblox RemoteEvents for validated movement input and state snapshots.
+- A top-down arena, local visuals, basic tank movement, food collection, score, level progression, and leaderboard.
 - Basic FFA, TDM, and four-team assignment foundations.
+
+Not included in this port are weapon, projectile, or player-damage mechanics. The original Arras combat systems are not migrated.
 
 Still to port from the web codebase:
 
 - The complete tank/class tree and all upgrade branches.
-- All controllers, drones, turrets, traps, special projectiles, and their detailed behavior.
+- Detailed entity controllers, advanced entity behaviors, drones, turrets, traps, and special entities.
 - All 44 game-mode configurations and their mode-specific scripts.
 - Every room/tile layout, boss, food variant, addon, editor feature, chat/moderation feature, and admin tool.
 - The original advanced collision, targeting, AI, visibility, and network-delta systems.
 
-The web implementation uses JavaScript, Node.js, HTTP, WebSockets, worker threads, and Canvas. Those runtime pieces are not reusable inside Roblox. Their gameplay responsibilities must be reimplemented in Luau and Roblox services. The Roblox branch therefore keeps the old source untouched and adds a native Roblox project alongside it.
+The web implementation uses JavaScript, Node.js, HTTP, WebSockets, worker threads, and Canvas. Those runtime pieces are not reusable inside Roblox. Their non-combat gameplay responsibilities must be reimplemented in Luau and Roblox services. The Roblox branch therefore keeps the old source untouched and adds a native Roblox project alongside it.
 
 ## Architecture
 
-- \`src/shared\`: constants, tank definitions, and game-mode rules shared by client and server.
+- \`src/shared\`: constants, basic unit definitions, and game-mode rules shared by client and server.
 - \`src/server\`: authoritative game state, arena creation, entity simulation, and Roblox networking.
 - \`src/client\`: input, top-down camera, local entity rendering, and HUD.
 
-The server stores entities as Luau tables and sends compact snapshots. It does not create one replicated physical Part for every bullet or food item. The client creates local-only visuals from snapshots. This avoids using Roblox's general-purpose physics replication for every Arras entity.
+The server stores entities as Luau tables and sends snapshots. It does not create one replicated physical Part for every food item or player visualization. The client creates local-only visuals from snapshots.
 
 ## Security and networking notes
 
-The server validates input types, numeric values, movement magnitude, and input rate. Clients do not decide their own health, score, position, damage, or upgrade results.
+The server validates input types, numeric values, movement magnitude, and input rate. Clients do not decide their own score or position.
 
-The snapshot event is unreliable because old visual snapshots are disposable. Important player actions and game-state changes should use reliable RemoteEvents in later migration steps. Snapshot payloads are intentionally capped and filtered to nearby entities; this is a starter transport, not yet a replacement for Marras's optimized visibility/delta protocol.
+The initial snapshot uses a reliable RemoteEvent because snapshots currently contain a complete nearby-state table and are not yet packed into a compact, size-bounded delta format. Before changing it to UnreliableRemoteEvent, implement a compact/delta transport and enforce Roblox's payload limit.
 
 ## Important limitation
 
