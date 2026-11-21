@@ -37,6 +37,7 @@ end)
 
 RunService.RenderStepped:Connect(function(deltaTime)
     input:Step(deltaTime)
+    renderer:Step(deltaTime)
     camera:Step(deltaTime)
 end)
 
