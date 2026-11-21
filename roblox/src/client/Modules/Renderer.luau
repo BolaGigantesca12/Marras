@@ -33,10 +33,11 @@ function Renderer.new()
     self.PlayerVisuals = {}
     self.FoodVisuals = {}
     self.LocalState = nil
+    self.Smoothing = 15
     return self
 end
 
-function Renderer:_playerVisual(id)
+function Renderer:_playerVisual(id, initialPosition)
     local visual = self.PlayerVisuals[id]
     if visual then
         return visual
@@ -50,7 +51,13 @@ function Renderer:_playerVisual(id)
         Config.PLAYER_COLOR
     )
 
-    visual = { body = body }
+    visual = {
+        body = body,
+        currentPosition = initialPosition,
+        targetPosition = initialPosition,
+        targetTransparency = 0,
+    }
+    body.CFrame = CFrame.new(initialPosition) * CFrame.Angles(0, 0, math.pi / 2)
     self.PlayerVisuals[id] = visual
     return visual
 end
@@ -79,7 +86,9 @@ local function removeMissing(visuals, seen)
         if not seen[id] then
             if typeof(visual) == "table" then
                 for _, part in pairs(visual) do
-                    part:Destroy()
+                    if typeof(part) == "Instance" then
+                        part:Destroy()
+                    end
                 end
             else
                 visual:Destroy()
@@ -98,10 +107,10 @@ function Renderer:Update(snapshot)
         local id, x, z, angle, team, score, level, name, alive = table.unpack(data)
         seenPlayers[id] = true
 
-        local visual = self:_playerVisual(id)
         local position = Vector3.new(x, 2, z)
-        visual.body.CFrame = CFrame.new(position) * CFrame.Angles(0, 0, math.pi / 2)
-        visual.body.Transparency = alive and 0 or 0.75
+        local visual = self:_playerVisual(id, position)
+        visual.targetPosition = position
+        visual.targetTransparency = alive and 0 or 0.75
         visual.body.Color = team > 0 and (Config.TEAM_COLORS[team] or Config.PLAYER_COLOR) or Config.PLAYER_COLOR
 
         if id == self.Player.UserId then
@@ -128,6 +137,15 @@ function Renderer:Update(snapshot)
     removeMissing(self.FoodVisuals, seenFood)
 
     return self.LocalState
+end
+
+function Renderer:Step(deltaTime)
+    local alpha = 1 - math.exp(-self.Smoothing * math.max(deltaTime, 0))
+    for _, visual in pairs(self.PlayerVisuals) do
+        visual.currentPosition = visual.currentPosition:Lerp(visual.targetPosition, alpha)
+        visual.body.CFrame = CFrame.new(visual.currentPosition) * CFrame.Angles(0, 0, math.pi / 2)
+        visual.body.Transparency += (visual.targetTransparency - visual.body.Transparency) * alpha
+    end
 end
 
 function Renderer:GetLocalState()
