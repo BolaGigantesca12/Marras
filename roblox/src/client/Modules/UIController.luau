@@ -44,7 +44,7 @@ function UIController.new()
         "Help",
         UDim2.fromOffset(360, 34),
         UDim2.new(0.5, -180, 1, -48),
-        "WASD / arrows: move     Mouse: aim     Left click: fire",
+        "WASD / arrow keys: move   |   Collect shapes to level up",
         13,
         Enum.TextXAlignment.Center
     )
@@ -64,22 +64,21 @@ function UIController:Update(localState, snapshot)
     if not localState then
         self.Stats.Text = "Connecting to the arena..."
     else
-        local healthPercent = math.floor((localState.health / math.max(localState.maxHealth, 1)) * 100)
-        local status = localState.alive and (tostring(healthPercent) .. "% HP") or "Respawning..."
+        local selfStatus = localState.alive and "ACTIVE" or "WAITING"
         self.Stats.Text = string.format(
             "MARRAS  |  %s\nLEVEL %d     SCORE %d\n%s",
             localState.name,
             localState.level,
             localState.score,
-            status
+            selfStatus
         )
     end
 
     local rows = {}
     for _, data in ipairs((snapshot and snapshot.players) or {}) do
         table.insert(rows, {
-            name = data[10],
-            score = data[8],
+            name = data[8],
+            score = data[6],
         })
     end
     table.sort(rows, function(a, b)
