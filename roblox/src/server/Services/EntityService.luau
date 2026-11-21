@@ -314,24 +314,34 @@ function EntityService:CreateSnapshotFor(player)
         bullets = {},
     }
 
-    for _, entity in pairs(self.Players) do
+    local function appendPlayer(entity)
         if #snapshot.players >= self.Config.MAX_PLAYERS_IN_SNAPSHOT then
-            break
+            return
         end
-        if (entity.position - viewer.position).Magnitude ^ 2 <= viewDistanceSquared then
-            table.insert(snapshot.players, {
-                entity.userId,
-                entity.position.X,
-                entity.position.Y,
-                entity.angle,
-                entity.health,
-                entity.maxHealth,
-                entity.team,
-                entity.score,
-                entity.level,
-                entity.name,
-                entity.alive,
-            })
+        table.insert(snapshot.players, {
+            entity.userId,
+            entity.position.X,
+            entity.position.Y,
+            entity.angle,
+            entity.health,
+            entity.maxHealth,
+            entity.team,
+            entity.score,
+            entity.level,
+            entity.name,
+            entity.alive,
+        })
+    end
+
+    -- Always include the receiving player's own state first. Otherwise a
+    -- busy server could fill the player cap before reaching this player,
+    -- leaving their client without a camera target or HUD state.
+    appendPlayer(viewer)
+
+    for _, entity in pairs(self.Players) do
+        if entity.userId ~= viewer.userId
+            and (entity.position - viewer.position).Magnitude ^ 2 <= viewDistanceSquared then
+            appendPlayer(entity)
         end
     end
 
