@@ -28,7 +28,7 @@ function NetworkService.new(config, entityService)
     local folder = getOrCreate(ReplicatedStorage, "Folder", config.REMOTE_FOLDER)
     self.Remotes = folder
     self.Input = getOrCreate(folder, "RemoteEvent", config.INPUT_REMOTE)
-    self.Snapshot = getOrCreate(folder, "UnreliableRemoteEvent", config.SNAPSHOT_REMOTE)
+    self.Snapshot = getOrCreate(folder, "RemoteEvent", config.SNAPSHOT_REMOTE)
 
     self.Input.OnServerEvent:Connect(function(player, packet)
         local now = os.clock()
